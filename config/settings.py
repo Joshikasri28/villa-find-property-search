@@ -14,8 +14,8 @@ DEBUG = os.environ.get("DEBUG", "True") == "True"
 ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
-    ".onrender.com",
-    ".vercel.app",
+    "villa-find-property-search.onrender.com",
+    "villafindpropertysearch.vercel.app",
 ]
 
 INSTALLED_APPS = [
