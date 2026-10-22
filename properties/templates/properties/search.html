@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VILLA FIND</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f7f8fa;
+            color: #172033;
+        }
+
+        header {
+            background: white;
+            border-bottom: 1px solid #e8ebf0;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: 800;
+            color: #163d35;
+        }
+
+        .logo span {
+            color: #b58b52;
+        }
+
+        .header-label {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        .hero {
+            background: #163d35;
+            color: white;
+            padding: 65px 7% 75px;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .eyebrow {
+            color: #d9bd8b;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            max-width: 700px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            color: #d3dfda;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            background: white;
+            padding: 8px;
+            border-radius: 12px;
+            max-width: 900px;
+            box-shadow: 0 12px 35px #102d2840;
+        }
+
+        .search-form input {
+            flex: 1;
+            min-width: 0;
+            border: none;
+            outline: none;
+            padding: 15px;
+            font-size: 15px;
+            color: #172033;
+            background: transparent;
+        }
+
+        .search-form button {
+            background: #b58b52;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 28px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .search-form button:hover {
+            background: #9d753e;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 24px;
+        }
+
+        .results-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .results-heading h2 {
+            font-size: 25px;
+            letter-spacing: -0.5px;
+        }
+
+        .results-count {
+            color: #667085;
+            font-size: 13px;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+        }
+
+        .property-card {
+            background: white;
+            border: 1px solid #e9ecf1;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px #17203312;
+        }
+
+        .property-visual {
+            height: 175px;
+            background: linear-gradient(135deg, #dce9e2, #b7cbbf);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .property-content {
+            padding: 22px;
+        }
+
+        .property-type {
+            display: inline-block;
+            background: #edf5ef;
+            color: #246347;
+            border-radius: 5px;
+            padding: 6px 9px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .property-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .location {
+            color: #667085;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #163d35;
+            margin-bottom: 18px;
+        }
+
+        .features {
+            border-top: 1px solid #edf0f3;
+            padding-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .feature {
+            background: #f5f6f8;
+            color: #475467;
+            border-radius: 6px;
+            padding: 8px 10px;
+            font-size: 12px;
+        }
+
+        .empty-state {
+            background: white;
+            border: 1px solid #e9ecf1;
+            border-radius: 14px;
+            padding: 45px 20px;
+            text-align: center;
+            color: #667085;
+            line-height: 1.8;
+        }
+
+        footer {
+            border-top: 1px solid #e8ebf0;
+            background: white;
+            color: #667085;
+            text-align: center;
+            padding: 24px;
+            font-size: 12px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 5%;
+            }
+
+            .header-label {
+                display: none;
+            }
+
+            .hero {
+                padding: 45px 5%;
+            }
+
+            .search-form {
+                flex-direction: column;
+            }
+
+            .search-form input {
+                padding: 14px 10px;
+            }
+
+            .search-form button {
+                padding: 15px;
+            }
+
+            main {
+                margin: 32px auto;
+                padding: 0 18px;
+            }
+
+            .results-heading h2 {
+                font-size: 21px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo"><span></span></div>
+    <div class="header-label"></div>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">FIND YOUR NEXT PROPERTY</div>
+        <h1>The right property starts with the right search.</h1>
+        <p>Describe your ideal home in simple words. We'll find properties that match your needs.</p>
+
+        <form class="search-form" method="GET" action="/">
+            <input
+                type="text"
+                name="q"
+                value="{{ query }}"
+                placeholder="e.g. 2 BHK villa under 60 lakhs with a garden"
+                aria-label="Describe your ideal property"
+                required
+            >
+            <button type="submit">Search Properties</button>
+        </form>
+    </div>
+</section>
+
+<main>
+    <div class="results-heading">
+        <h2>
+            {% if query %}
+                Matching Properties
+            {% else %}
+                Explore Properties
+            {% endif %}
+        </h2>
+        <span class="results-count">
+            {{ properties|length }} properties found
+        </span>
+    </div>
+
+    {% if properties %}
+        <div class="property-grid">
+            {% for property in properties %}
+                <article class="property-card">
+                    <div class="property-visual"></div>
+
+                    <div class="property-content">
+                        <span class="property-type">
+                            {{ property.property_type|default:"Property" }}
+                        </span>
+
+                        <h3>{{ property.name }}</h3>
+
+                        <div class="location">
+                            {{ property.location }}
+                        </div>
+
+                        <div class="price">
+                            ₹{{ property.price|floatformat:0 }}
+                        </div>
+
+                        <div class="features">
+                            <span class="feature">
+                                {{ property.bhk }} BHK
+                            </span>
+
+                            <span class="feature">
+                                {% if property.garden %}Garden{% else %}No garden{% endif %}
+                            </span>
+
+                            <span class="feature">
+                                {{ property.parking }} parking spaces
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h3>No matching properties found</h3>
+            <p>Try changing your budget, location, or property requirements.</p>
+        </div>
+    {% endif %}
+</main>
+
+<footer>
+</footer>
+
+</body>
+</html>
